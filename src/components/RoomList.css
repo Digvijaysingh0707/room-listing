@@ -1,0 +1,124 @@
+.room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.room-card {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  overflow: hidden;
+  min-height: 180px;
+  position: relative;
+  align-items: stretch;
+}
+
+.room-media {
+  flex: 0 0 180px;
+  min-width: 180px;
+  min-height: 180px;
+  background: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.room-media img,
+.room-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+.media-placeholder {
+  color: #aaa;
+  font-size: 0.95rem;
+  text-align: center;
+  width: 100%;
+}
+
+.media-skeleton {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  animation: skeleton-loading 1.2s infinite linear;
+  z-index: 1;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.room-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  text-align: left;
+}
+
+.room-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.room-price {
+  color: #1a7f37;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.room-desc {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skeleton-card {
+  height: 180px;
+  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
+  border-radius: 12px;
+  animation: skeleton-loading 1.2s infinite linear;
+}
+
+.error {
+  color: #c00;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.end-message {
+  color: #888;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+  .room-card {
+    flex-direction: column;
+    min-height: 320px;
+  }
+  .room-media {
+    min-width: 100%;
+    min-height: 180px;
+    max-height: 220px;
+  }
+} 

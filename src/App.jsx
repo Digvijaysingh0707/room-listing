@@ -1,10 +1,11 @@
-function App() {
+import RoomList from './components/RoomList';
 
+function App() {
   return (
     <>
-     Hello World
+      <RoomList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
