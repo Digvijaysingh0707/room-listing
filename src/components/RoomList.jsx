@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './RoomList.css';
 import RoomContainer from './RoomContainer';
 import sampleData from '../data/data.json';
+import CircularLoader from './Loader/CircularLoader';
 
 const PAGE_SIZE = 5;
 
@@ -21,7 +22,7 @@ function RoomList() {
 
   // Infinite scroll: load more when bottom is visible
   const lastRoomRef = useCallback(node => {
-    if (loading) return;
+    // if (loading) return;
     if (observer.current) observer.current.disconnect();
     observer.current = new window.IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMore) {
@@ -61,7 +62,7 @@ function RoomList() {
           />
         );
       })}
-      {loading && <div className="skeleton-list">{Array.from({length: PAGE_SIZE}).map((_,i) => <div className="skeleton-card" key={i}></div>)}</div>}
+      {loading && <CircularLoader/>}
       {error && <div className="error">{error}</div>}
       {!hasMore && <div className="end-message">No more rooms to load.</div>}
     </div>
