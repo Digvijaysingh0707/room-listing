@@ -18,7 +18,7 @@
   transition: box-shadow 0.2s;
   align-items: flex-start;
   min-height: 260px;
-  height: 290px;
+  height: 300px;
   overflow-y: hidden;
 }
 .room-left {
@@ -225,6 +225,28 @@
   color: #aaa;
   border-radius: 8px;
   font-size: 1rem;
+}
+
+.room-list-loader-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.end-message {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  padding: 2rem 0;
+}
+
+.error {
+  text-align: center;
+  color: #c00;
+  font-size: 1.1rem;
+  padding: 2rem 0;
 }
 
 @media (max-width: 900px) {
