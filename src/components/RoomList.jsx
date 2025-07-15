@@ -4,6 +4,7 @@ import './RoomList.css';
 import RoomContainer from './RoomContainer';
 import sampleData from '../data/data.json';
 import CircularLoader from './Loader/CircularLoader';
+import { throttle } from '../clientUtils';
 
 const PAGE_SIZE = 20;
 const CARD_HEIGHT = 350; // px, match .card-layout.room-container height in CSS
@@ -45,15 +46,19 @@ function RoomList() {
   }, [page]);
 
   // Virtualized list: load more when user scrolls near end
-  const handleItemsRendered = useCallback(({ visibleStopIndex }) => {
-    if (
-      hasMore &&
-      !loading &&
-      visibleStopIndex >= rooms.length - 3 // threshold
-    ) {
-      setPage(prev => prev + 1);
-    }
-  }, [hasMore, loading, rooms.length]);
+  const throttledHandleItemsRendered = useCallback(
+    throttle(({ visibleStopIndex }) => {
+      if (
+        hasMore &&
+        !loading &&
+        visibleStopIndex >= rooms.length - 3
+      ) {
+        setPage(prev => prev + 1);
+      }
+    }, 200), // throttle interval (ms)
+    [hasMore, loading, rooms.length]
+  );
+
 
   // List item renderer
   const Row = ({ index, style }) => {
@@ -90,7 +95,7 @@ function RoomList() {
         itemCount={itemCount}
         itemSize={ITEM_SIZE}
         width={"100%"}
-        onItemsRendered={handleItemsRendered}
+        onItemsRendered={throttledHandleItemsRendered}
         ref={listRef}
       >
         {Row}

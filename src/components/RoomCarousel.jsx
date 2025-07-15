@@ -4,7 +4,6 @@ const RoomCarousel = ({ media }) => {
   const [idx, setIdx] = useState(0);
   const mainRef = useRef();
   const [isVisible, setIsVisible] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(false); // NEW
   const videoRef = useRef();
 
   // Intersection observer for video autoplay
@@ -14,7 +13,6 @@ const RoomCarousel = ({ media }) => {
     const obs = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
-        if (entry.isIntersecting) setShouldLoad(true); // lazy load
       },
       { threshold: 0.25 }
     );

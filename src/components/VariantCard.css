@@ -1,0 +1,100 @@
+.variant-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 240px;
+  max-width: 340px;
+  margin: 0 auto;
+  transition: box-shadow 0.18s;
+}
+.variant-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+.variant-title-row {
+  width: 100%;
+  margin-bottom: 1.1rem;
+}
+.variant-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+}
+.variant-amenities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.variant-amenity {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #333;
+  font-size: 1.05rem;
+}
+.variant-amenity-icon {
+  font-size: 1.2em;
+}
+.variant-price-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+.variant-price {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+.variant-discount {
+  background: #f3f3f3;
+  color: #222;
+  font-size: 1.01rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.18em 0.9em;
+}
+.variant-cancellation {
+  color: #222;
+  font-size: 1.01rem;
+  margin-bottom: 0.5rem;
+}
+.variant-cancellation-link {
+  color: #222;
+  font-size: 1.01rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.3em;
+}
+.variant-arrow {
+  font-size: 1.3em;
+  margin-left: 0.1em;
+}
+.variant-book-btn {
+  background: #23272f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8em 0;
+  width: 100%;
+  font-size: 1.13rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: auto;
+  transition: background 0.18s;
+}
+.variant-book-btn:hover {
+  background: #111318;
+}
+@media (max-width: 900px) {
+  .variant-card {
+    max-width: 100%;
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+} 
