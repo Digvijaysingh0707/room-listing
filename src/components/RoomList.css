@@ -1,124 +1,261 @@
 .room-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  max-width: 800px;
+  gap: 2rem;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 
-.room-card {
+.card-layout.room-container {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  overflow: hidden;
-  min-height: 180px;
-  position: relative;
-  align-items: stretch;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.2s;
+  align-items: flex-start;
+  min-height: 260px;
+  height: 290px;
+  overflow-y: hidden;
 }
-
-.room-media {
-  flex: 0 0 180px;
-  min-width: 180px;
-  min-height: 180px;
-  background: #f3f3f3;
+.room-left {
+  flex: 0 0 320px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+}
+.room-right {
+  flex: 1;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+.room-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.room-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.room-address {
+  color: #444;
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+.room-booking-stat {
+  color: #e53935;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: right;
+  line-height: 1.2;
+}
+.room-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.room-rating-badge {
+  background: #388e3c;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 0.18em 0.7em;
+  font-size: 1.05rem;
+  margin-right: 0.2em;
+}
+.room-rating-count {
+  color: #222;
+  font-size: 1.01rem;
+}
+.room-amenities-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.1rem;
+  flex-wrap: wrap;
+}
+.room-amenity {
+  color: #333;
+  font-size: 1.01rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.room-amenity.more {
+  color: #444;
+  font-weight: 500;
+}
+.room-bottom-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  gap: 1.5rem;
+}
+.room-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.room-price-main {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+}
+.room-price-sub {
+  color: #888;
+  font-size: 1rem;
+  margin-top: 0.1em;
+}
+.room-btns {
+  display: flex;
+  gap: 1rem;
+}
+.room-btn {
+  font-size: 1.08rem;
+  padding: 0.6em 1.5em;
+  border-radius: 6px;
+  border: 2px solid #222;
+  background: #fff;
+  color: #222;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.room-btn.details {
+  border-color: #222;
+  background: #fff;
+  color: #222;
+}
+.room-btn.details:hover {
+  background: #f3f3f3;
+}
+.room-btn.book {
+  border-color: #2e7d32;
+  background: #2e7d32;
+  color: #fff;
+}
+.room-btn.book:hover {
+  background: #1b5e20;
 }
 
-.room-media img,
-.room-media video {
+/* Carousel vertical layout */
+.room-carousel-vertical {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.carousel-thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.carousel-thumb {
+  width: 60px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.18s;
+}
+.carousel-thumb.active {
+  border: 2px solid #2e7d32;
+}
+.carousel-main-img-wrap {
+  position: relative;
+  width: 220px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-main-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
-  display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  background: #f3f3f3;
 }
-
-.media-placeholder {
-  color: #aaa;
-  font-size: 0.95rem;
-  text-align: center;
-  width: 100%;
-}
-
-.media-skeleton {
+.carousel-arrow {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
-  animation: skeleton-loading 1.2s infinite linear;
-  z-index: 1;
-}
-
-@keyframes skeleton-loading {
-  0% { background-position: -200px 0; }
-  100% { background-position: calc(200px + 100%) 0; }
-}
-
-.room-info {
-  flex: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.85);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.2rem;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 1rem 0.5rem;
-  text-align: left;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+  z-index: 2;
 }
-
-.room-info h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  font-weight: 600;
+.carousel-arrow.left {
+  left: -16px;
 }
-
-.room-price {
-  color: #1a7f37;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+.carousel-arrow.right {
+  right: -16px;
 }
-
-.room-desc {
-  color: #555;
-  font-size: 0.95rem;
+.carousel-arrow:hover {
+  background: #eee;
 }
-
-.skeleton-list {
+.carousel-placeholder {
+  width: 220px;
+  height: 160px;
   display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  background: #f3f3f3;
+  color: #aaa;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
-.skeleton-card {
-  height: 180px;
-  background: linear-gradient(90deg, #f3f3f3 25%, #e0e0e0 50%, #f3f3f3 75%);
-  border-radius: 12px;
-  animation: skeleton-loading 1.2s infinite linear;
-}
-
-.error {
-  color: #c00;
-  text-align: center;
-  margin: 1rem 0;
-}
-
-.end-message {
-  color: #888;
-  text-align: center;
-  margin: 1rem 0;
-}
-
-@media (max-width: 600px) {
-  .room-card {
+@media (max-width: 900px) {
+  .card-layout.room-container {
     flex-direction: column;
-    min-height: 320px;
+    padding: 1rem;
   }
-  .room-media {
-    min-width: 100%;
-    min-height: 180px;
-    max-height: 220px;
+  .room-left {
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
+  .room-right {
+    padding-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .room-list {
+    padding: 0.5rem;
+  }
+  .card-layout.room-container {
+    padding: 0.5rem;
+  }
+  .room-left {
+    flex: 0 0 100%;
+  }
+  .carousel-main-img-wrap {
+    width: 100px;
+    height: 70px;
+  }
+  .carousel-thumb {
+    width: 36px;
+    height: 28px;
   }
 } 
